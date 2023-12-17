@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="row section">
+    <div class="col-md-12">
+      <div class="heading">
+        <h3>FOOTBALL UPDATES</h3>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-center" *ngIf="loading">
+      <div class="spinner-border text-primary m-5" role="status"></div>
+    </div>
+
+    <div class="row section" *ngIf="teamResultsData.length">
+      <div class="col-md-12">
+        <table class="table table-bordered">
+          <tbody>
+            <tr *ngFor="let teamResult of teamResultsData; index as i">
+              <th scope="row">{{ i + 1 }}</th>
+              <th scope="row">
+                <img
+                  class="icon"
+                  src="{{ teamResult.teams.home.logo }}"
+                  width="40px"
+                />
+              </th>
+              <td class="team-name">
+                {{ teamResult.teams.home.name }}
+              </td>
+              <td>{{ teamResult.goals.home }}</td>
+              <td>{{ teamResult.goals.away }}</td>
+              <td>{{ teamResult.teams.away.name }}</td>
+              <th scope="row">
+                <img
+                  class="icon"
+                  src="{{ teamResult.teams.away.logo }}"
+                  width="40px"
+                />
+              </th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 p-2 mt-4">
+        <button class="btn btn-primary" (click)="backToFootballUpdates()">
+          Back
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
